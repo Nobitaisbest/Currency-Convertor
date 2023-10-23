@@ -12,17 +12,23 @@ function convertCurrency() {
     Hello(fromCurrency)  
 }
 function Hello(ch) {
-    console.log(ch)
     let KEY = "cur_live_ndJxOdd0ouCdScGQCklFSZUtlzcsqTrTKLzrMa0R";
-    // console.log(KEY)
-    let url = `https://api.currencyapi.com/v3/latest?apikey=${KEY}`
-    // console.log(url)
+    let url = `https://api.currencyapi.com/v3/latest?apikey=${KEY}`;
+
     axios.get(`${url}&currencies=${ch}`)
-    .then(function (response) {
-        let data = response.data.data;
-        console.table(data);
-    })
-    .catch(function (error) {
-        console.error(error);
-    });
+        .then(function (response) {
+            let data = response.data.data;
+            const content = document.querySelector('.content');
+
+            for (const currency in data) {
+                const currencyElement = document.createElement('div');
+                currencyElement.classList.add('currency-info');
+                currencyElement.innerHTML = `<strong>${currency}:</strong> ${data[currency]}`;
+
+                content.appendChild(currencyElement);
+            }
+        })
+        .catch(function (error) {
+            console.error(error);
+        });
 };
