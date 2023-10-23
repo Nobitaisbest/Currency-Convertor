@@ -22,7 +22,7 @@ label, select, input[type="number"] {
     border-radius: 4px;
 }
 
-input[type="submit"] {
+button {
     background-color: #4CAF50;
     color: white;
     padding: 10px 20px;
@@ -31,7 +31,7 @@ input[type="submit"] {
     cursor: pointer;
 }
 
-input[type="submit"]:hover {
+button:hover {
     background-color: #45a049;
 }
 
